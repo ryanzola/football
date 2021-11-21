@@ -30,7 +30,7 @@ export default class Renderer {
   }
 
   setInstance() {
-    this.clearColor = '#160f11'
+    this.clearColor = '#fffcf7'
 
     if(this.debug) {
         this.debugFolder.addInput(

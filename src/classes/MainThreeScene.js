@@ -5,7 +5,7 @@ import Camera from './Camera'
 import Renderer from './Renderer'
 import Controls from './Controls'
 
-import Cube from './DummyCube'
+import Footballs from "./Footballs"
 
 import RAF from '../utils/RAF'
 import Sizes from '../utils/Sizes'
@@ -42,7 +42,7 @@ export default class MainThreeScene {
 		this.setRenderer()
 		this.setControls()
 
-		this.setDummyCube()
+		this.setFootballs()
 
 		//RENDER LOOP AND WINDOW SIZE UPDATER SETUP
 		this.sizes.on('resize', () => {
@@ -82,11 +82,12 @@ export default class MainThreeScene {
 
 	setScene() {
 		this.scene = new THREE.Scene()
+		this.scene.fog = new THREE.Fog(0xfffcf7, 0.01, 30)
 	}
 
 	setCamera() {
 		this.camera = new Camera()
-		this.camera.instance.position.set(0, 0, 8)
+		this.camera.instance.position.set(0, 0, 10)
 	}
 
 	setRenderer() {
@@ -98,8 +99,8 @@ export default class MainThreeScene {
 		this.controls = new Controls()
 	}
 
-	setDummyCube() {
-		this.cube = new Cube()
+	setFootballs() {
+		this.footballs = new Footballs()
 	}
 
 	update() {
@@ -117,6 +118,9 @@ export default class MainThreeScene {
 
 		if(this.cube)
 			this.cube.update()
+
+		if(this.footballs)
+			this.footballs.update()
 	}
 
 	resize() {
